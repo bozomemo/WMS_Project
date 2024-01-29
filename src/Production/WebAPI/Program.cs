@@ -1,3 +1,5 @@
+using Application;
+using Persistence;
 
 namespace WebAPI
 {
@@ -8,6 +10,11 @@ namespace WebAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddPersistenceServices(builder.Configuration);
+            builder.Services.AddApplicationServices();
+            builder.Services.AddSecurityServices();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
