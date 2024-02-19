@@ -9,7 +9,7 @@ namespace Application.Features.Auth.Commands.Login.LoginByEmail
     {
         public string Email { get; set; }
 
-        public string IpAdress { get; set; }
+        public string IpAddress { get; set; }
 
         public string Password { get; set; }
     }

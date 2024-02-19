@@ -27,11 +27,11 @@ namespace Application.Features.Auth.Commands.Login.LoginByEmail
 
             var accessToken = await _authService.CreateAccessToken(user);
 
-            var refreshToken = _authService.CreateRefreshToken(user, request.IpAdress);
+            var refreshToken = _authService.CreateRefreshToken(user, request.IpAddress);
 
-            _ = await _authService.AddRefreshToken(refreshToken);
+            var addedRefreshToken = await _authService.AddRefreshToken(refreshToken);
 
-            return new() { AccessToken = accessToken };
+            return new() { AccessToken = accessToken, RefreshToken = addedRefreshToken };
         }
     }
 }
