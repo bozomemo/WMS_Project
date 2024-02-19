@@ -6,8 +6,11 @@ namespace Core.ElasticSearch;
 public interface IElasticSearch
 {
     Task<IElasticSearchResult> CreateNewIndexAsync(IndexModel indexModel);
+
     Task<IElasticSearchResult> InsertAsync(ElasticSearchInsertUpdateModel model);
+
     Task<IElasticSearchResult> InsertManyAsync(string indexName, object[] items);
+
     IReadOnlyDictionary<IndexName, IndexState> GetIndexList();
 
     Task<List<ElasticSearchGetModel<T>>> GetAllSearch<T>(SearchParameters parameters)
@@ -20,5 +23,6 @@ public interface IElasticSearch
         where T : class;
 
     Task<IElasticSearchResult> UpdateByElasticIdAsync(ElasticSearchInsertUpdateModel model);
+
     Task<IElasticSearchResult> DeleteByElasticIdAsync(ElasticSearchModel model);
 }

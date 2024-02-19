@@ -12,7 +12,6 @@ public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, 
     private readonly LoggerServiceBase _loggerServiceBase;
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-
     public LoggingBehavior(LoggerServiceBase loggerServiceBase, IHttpContextAccessor httpContextAccessor)
     {
         _loggerServiceBase = loggerServiceBase;

@@ -8,9 +8,9 @@ public class User : Entity
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
+    public string Username { get; set; }
     public byte[] PasswordSalt { get; set; }
     public byte[] PasswordHash { get; set; }
-    public bool Status { get; set; }
     public AuthenticatorType AuthenticatorType { get; set; }
 
     public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }
@@ -23,7 +23,7 @@ public class User : Entity
     }
 
     public User(int id, string firstName, string lastName, string email, byte[] passwordSalt, byte[] passwordHash,
-                bool status, AuthenticatorType authenticatorType) : this()
+                AuthenticatorType authenticatorType) : this()
     {
         Id = id;
         FirstName = firstName;
@@ -31,7 +31,6 @@ public class User : Entity
         Email = email;
         PasswordSalt = passwordSalt;
         PasswordHash = passwordHash;
-        Status = status;
         AuthenticatorType = authenticatorType;
     }
 }

@@ -25,7 +25,6 @@ public static class IQueryablePaginateExtensions
         return list;
     }
 
-
     public static IPaginate<T> ToPaginate<T>(this IQueryable<T> source, int index, int size,
                                              int from = 0)
     {

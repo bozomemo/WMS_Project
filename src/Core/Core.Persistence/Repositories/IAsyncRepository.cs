@@ -1,6 +1,6 @@
-﻿using System.Linq.Expressions;
-using Core.Persistence.Paging;
+﻿using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Expressions;
 
 namespace Core.Persistence.Repositories;
 
@@ -20,6 +20,8 @@ public interface IAsyncRepository<T> : IQuery<T> where T : Entity
                                              CancellationToken cancellationToken = default);
 
     Task<T> AddAsync(T entity);
+
     Task<T> UpdateAsync(T entity);
+
     Task<T> DeleteAsync(T entity);
 }

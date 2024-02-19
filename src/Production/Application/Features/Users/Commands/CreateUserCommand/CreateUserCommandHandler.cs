@@ -3,8 +3,8 @@ using Application.Features.Users.Rules;
 using Application.Features.Users.Validators;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Security.Entities;
 using Core.Security.Hashing;
-using Domain.Entities;
 using MediatR;
 
 namespace Application.Features.Users.Commands.CreateUserCommand
@@ -12,10 +12,10 @@ namespace Application.Features.Users.Commands.CreateUserCommand
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, UserDto>
     {
         private readonly IUserRepository _userRepository;
-        private readonly UserValidator _userValidator;
+        private readonly CreateUserValidator _userValidator;
         private readonly IMapper _mapper;
 
-        public CreateUserCommandHandler(IUserRepository userRepository, UserValidator userValidator, IMapper mapper)
+        public CreateUserCommandHandler(IUserRepository userRepository, CreateUserValidator userValidator, IMapper mapper)
         {
             _userRepository = userRepository;
             _userValidator = userValidator;
@@ -24,7 +24,7 @@ namespace Application.Features.Users.Commands.CreateUserCommand
 
         public async Task<UserDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            UsersRules.IsUserValid(_userValidator,request);
+            UsersRules.IsUserValid(_userValidator, request);
 
             byte[] hash, salt;
 
@@ -45,7 +45,6 @@ namespace Application.Features.Users.Commands.CreateUserCommand
             var userDto = _mapper.Map<UserDto>(createdUser);
 
             return userDto;
-
         }
     }
 }

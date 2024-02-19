@@ -1,5 +1,5 @@
-﻿using System.Text;
-using System.Linq.Dynamic.Core;
+﻿using System.Linq.Dynamic.Core;
+using System.Text;
 
 namespace Core.Persistence.Dynamic;
 

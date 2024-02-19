@@ -1,9 +1,6 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.Features.Users.Commands.UpdateUserCommand;
+using AutoMapper;
+using Core.Security.Entities;
 
 namespace Application.Features.Users.MappingProfiles
 {
@@ -11,7 +8,13 @@ namespace Application.Features.Users.MappingProfiles
     {
         public MappingProfile()
         {
-            CreateMap<Domain.Entities.User, Dtos.UserDto>();
+            CreateMap<User, Dtos.UserDto>().ForAllMembers(options =>
+            {
+                options.Condition((src, dest, value) => value != null);
+            });
+
+            CreateMap<UpdateUserCommand, User>().ForMember(x => x.Id, options => options.Ignore())
+                .ForAllMembers(options => options.Condition((src, dest, value) => value != null));
         }
     }
 }

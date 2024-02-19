@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
@@ -15,10 +15,22 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.Application\Core.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Core.Mailing\Core.Mailing.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Auth\Constants\" />
+    <Folder Include="Features\Auth\Queries\" />
+    <Folder Include="Features\Auth\Validators\" />
+    <Folder Include="Features\OperationClaim\Constants\" />
+    <Folder Include="Features\UserOperationClaim\Constants\" />
+    <Folder Include="Features\UserOperationClaim\Models\" />
+    <Folder Include="Features\UserOperationClaim\Rules\" />
+    <Folder Include="Features\UserOperationClaim\Validators\" />
+    <Folder Include="Features\OperationClaim\Models\" />
+    <Folder Include="Features\OperationClaim\Rules\" />
+    <Folder Include="Features\OperationClaim\Validators\" />
     <Folder Include="Features\Template\Commands\" />
     <Folder Include="Features\Template\Constants\" />
     <Folder Include="Features\Template\Dtos\" />
@@ -27,6 +39,7 @@
     <Folder Include="Features\Template\Queries\" />
     <Folder Include="Features\Template\Rules\" />
     <Folder Include="Features\Template\Validators\" />
+    <Folder Include="Features\Users\Commands\ResetPasswordCommand\" />
     <Folder Include="Features\Users\Models\" />
   </ItemGroup>
 
