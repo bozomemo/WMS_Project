@@ -19,6 +19,14 @@ namespace Persistence
             services.AddScoped<IOtpAuthenticatorRepository, OtpAuthenticatorRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+            services.AddScoped<IOperationTypeRepository, OperationTypeRepository>();
+            services.AddScoped<IWarehouseRepository, WarehouseRepository>();
+            services.AddScoped<IPalletTypeRepository, PalletTypeRepository>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
+            services.AddScoped<IPalletStatusRepository, PalletStatusRepository>();
+            services.AddScoped<IPalletRepository, PalletRepository>();
+
+
 
             return services;
         }

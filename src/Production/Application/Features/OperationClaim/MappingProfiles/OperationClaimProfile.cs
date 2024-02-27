@@ -18,7 +18,7 @@ namespace Application.Features.OperationClaim.MappingProfiles
         {
             CreateMap<Core.Security.Entities.OperationClaim, OperationClaimDto>().ReverseMap();
 
-            CreateMap<Core.Security.Entities.OperationClaim, UpdateOperationClaimCommand>().ReverseMap();
+            CreateMap<UpdateOperationClaimCommand, Core.Security.Entities.OperationClaim>().ForAllMembers(options => options.Condition((src, dest, value) => value != null));
 
             CreateMap<Core.Security.Entities.OperationClaim, CreateOperationClaimCommand>().ReverseMap();
 

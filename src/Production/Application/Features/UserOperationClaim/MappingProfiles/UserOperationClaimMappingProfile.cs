@@ -23,7 +23,8 @@ namespace Application.Features.UserOperationClaim.MappingProfiles
 
             CreateMap<Core.Security.Entities.UserOperationClaim, EntityIdDto>().ReverseMap();
 
-            CreateMap<UpdateUserOperationClaimCommand, Core.Security.Entities.UserOperationClaim>().ForMember(x => x.Id, opt => opt.Ignore()).ReverseMap();
+            CreateMap<UpdateUserOperationClaimCommand, Core.Security.Entities.UserOperationClaim>().ForMember(x => x.Id, opt => opt.Ignore())
+                .ForAllMembers(options => options.Condition((src, dest, value) => value != null));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Application.Features.UserOperationClaim.Commands.UpdateUserOperationCl
     {
         public int Id { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
         public string[] Roles => [RolesConstants.ADMIN_ROLE];
     }

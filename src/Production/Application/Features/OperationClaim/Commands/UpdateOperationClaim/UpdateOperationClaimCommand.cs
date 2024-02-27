@@ -16,6 +16,8 @@ namespace Application.Features.OperationClaim.Commands.UpdateOperationClaim
 
         public string? Name { get; set; }
 
+        public bool? IsActive { get; set; }
+
         public string[] Roles => [RolesConstants.ADMIN_ROLE];
     }
 }

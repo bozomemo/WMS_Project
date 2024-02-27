@@ -32,7 +32,7 @@ namespace Application.Features.Auth.Commands.AuthRefreshToken
                 await _authService.RevokeDescendantRefreshTokens(refreshToken, request.IpAddress ??
                     throw new BusinessException(AuthConstants.IP_ADDRESS_NULL), $"Attempted reuse of revoked ancestor token: {refreshToken.Token}");
 
-            if (refreshToken.Revoked != null && refreshToken.Expires > DateTime.UtcNow) throw new BusinessException(AuthConstants.REFRESH_TOKEN_EXPIRED);
+            if (refreshToken.Revoked != null && refreshToken.Expires < DateTime.UtcNow) throw new BusinessException(AuthConstants.REFRESH_TOKEN_EXPIRED);
 
             User? user = await _userRepository.GetAsync(x => x.Id == refreshToken.UserId) ?? throw new BusinessException(AuthConstants.USER_DOESNT_EXIST);
 

@@ -18,8 +18,8 @@ public class User : Entity
 
     public User()
     {
-        UserOperationClaims = new HashSet<UserOperationClaim>();
-        RefreshTokens = new HashSet<RefreshToken>();
+        UserOperationClaims = [];
+        RefreshTokens = [];
     }
 
     public User(int id, string firstName, string lastName, string email, byte[] passwordSalt, byte[] passwordHash,

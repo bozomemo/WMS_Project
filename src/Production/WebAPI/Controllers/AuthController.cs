@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
 
             if (result.RefreshToken is not null) SetRefreshTokenToCookie(result.RefreshToken);
 
-            return Ok(result);
+            return Ok(result.AccessToken);
         }
 
         [HttpPost("LoginByUsername")]
@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
 
             if (result.RefreshToken is not null) SetRefreshTokenToCookie(result.RefreshToken);
 
-            return Ok(result);
+            return Ok(result.AccessToken);
         }
 
         [HttpGet("RefreshToken")]
@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
 
             var result = await Mediator.Send(command);
 
-            return Ok(result);
+            return Ok(result.AccessToken);
         }
 
         private string? GetRefreshTokenFromCookies()

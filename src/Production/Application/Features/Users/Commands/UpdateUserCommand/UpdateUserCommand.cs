@@ -17,6 +17,7 @@ namespace Application.Features.Users.Commands.UpdateUserCommand
         public string? LastName { get; set; }
         public string? Username { get; set; }
         public string? Email { get; set; }
+        public bool? IsActive { get; set; }
 
         public string[] Roles => [RolesConstants.ADMIN_ROLE];
     }

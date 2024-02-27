@@ -23,7 +23,7 @@ namespace Application.Features.Auth.Commands.Login.LoginByUsername
 
         public async Task<LoggedDto> Handle(LoginByUsernameCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userService.GetByEmail(request.Username) ?? throw new BusinessException(AuthConstants.USER_DOESNT_EXIST);
+            var user = await _userService.GetByUsername(request.Username) ?? throw new BusinessException(AuthConstants.USER_DOESNT_EXIST);
 
             if (request.IpAddress is null) throw new BusinessException(AuthConstants.IP_ADDRESS_NULL);
 
