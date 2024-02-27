@@ -64,6 +64,15 @@ namespace WebAPI
                 };
             });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyAllowSpecificOrigins",
+                    policy =>
+                    {
+                        policy.WithOrigins("https://localhost/*");
+                    });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -72,6 +81,8 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("MyAllowSpecificOrigins");
 
             app.UseHttpsRedirection();
 

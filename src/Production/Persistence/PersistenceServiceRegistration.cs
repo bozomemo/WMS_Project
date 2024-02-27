@@ -25,6 +25,7 @@ namespace Persistence
             services.AddScoped<ISupplierRepository, SupplierRepository>();
             services.AddScoped<IPalletStatusRepository, PalletStatusRepository>();
             services.AddScoped<IPalletRepository, PalletRepository>();
+            services.AddScoped<IZoneRepository, ZoneRepository>();
 
 
 
