@@ -18,6 +18,8 @@ namespace Application.Features.SupplierF.Commands.UpdateSupplier
 
         public string? Description { get; set; }
 
+        public bool? IsActive { get; set; }
+
         public string[] Roles => [RolesConstants.ADMIN_ROLE];
     }
 }

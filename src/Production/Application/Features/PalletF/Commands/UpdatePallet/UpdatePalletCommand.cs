@@ -26,6 +26,8 @@ namespace Application.Features.PalletF.Commands.UpdatePallet
 
         public int PalletTypeId { get; set; }
 
+        public bool? IsActive { get; set; }
+
         public string[] Roles => [RolesConstants.ADMIN_ROLE];
     }
 }

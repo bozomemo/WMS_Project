@@ -21,5 +21,7 @@ namespace Domain.Constants
         public const string PALLET_DOESNT_EXIST = "Pallet doesn't exist.";
 
         public const string ZONE_DOESNT_EXIST = "Zone doesn't exist.";
+
+        public const string CARTON_DOESNT_EXIST = "Carton doesn't exist.";
     }
 }
