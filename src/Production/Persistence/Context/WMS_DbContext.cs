@@ -6,12 +6,8 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Persistence.Context
 {
-    public class WMS_DbContext : DbContext
+    public class WMS_DbContext(DbContextOptions options) : DbContext(options)
     {
-        public WMS_DbContext(DbContextOptions options) : base(options)
-        {
-        }
-
         public DbSet<Carton> Cartons { get; set; }
         public DbSet<OperationType> OperationTypes { get; set; }
         public DbSet<Pallet> Pallets { get; set; }
@@ -26,6 +22,8 @@ namespace Persistence.Context
         public DbSet<EmailAuthenticator> EmailAuthenticator { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<OtpAuthenticator> OtpAuthenticators { get; set; }
+        public DbSet<WarehouseReceipt> WarehouseReceipts { get; set; }
+        public DbSet<WarehouseReceiptItem> WarehouseReceiptItems { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

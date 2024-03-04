@@ -40,9 +40,9 @@
     <Folder Include="Features\CartonF\Models\" />
     <Folder Include="Features\CartonF\Rules\" />
     <Folder Include="Features\CartonF\Validators\" />
-    <Folder Include="Features\WarehouseReceipt\Commands\" />
+    <Folder Include="Features\WarehouseReceipt\Commands\DeleteWarehouseReceipt\" />
+    <Folder Include="Features\WarehouseReceipt\Commands\UpdateWarehouseReceipt\" />
     <Folder Include="Features\WarehouseReceipt\Constants\" />
-    <Folder Include="Features\WarehouseReceipt\Dtos\" />
     <Folder Include="Features\WarehouseReceipt\MappingProfiles\" />
     <Folder Include="Features\WarehouseReceipt\Models\" />
     <Folder Include="Features\WarehouseReceipt\Queries\" />
