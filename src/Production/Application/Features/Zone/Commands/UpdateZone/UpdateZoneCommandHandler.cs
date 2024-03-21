@@ -27,9 +27,11 @@ namespace Application.Features.Zone.Commands.UpdateZone
         {
             var zone = await _zoneRepository.GetAsync(x => x.Id == request.Id) ?? throw new BusinessException(BusinessExceptionConstants.ZONE_DOESNT_EXIST);
 
-            var deletedZone = await _zoneRepository.DeleteAsync(zone);
+            _mapper.Map(request, zone);
 
-            var dto = _mapper.Map<ZoneDto>(deletedZone);
+            var updated = await _zoneRepository.UpdateAsync(zone);
+
+            var dto = _mapper.Map<ZoneDto>(updated);
 
             return dto;
         }

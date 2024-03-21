@@ -25,6 +25,6 @@ namespace Application.Features.WarehouseReceipt.Dtos
 
         public int? CreatedByUserId { get; set; }
 
-        public HashSet<WarehouseReceiptItemDto>? WarehouseReceiptItems { get; set; }
+        public HashSet<WarehouseItemDto>? WarehouseReceiptItems { get; set; }
     }
 }

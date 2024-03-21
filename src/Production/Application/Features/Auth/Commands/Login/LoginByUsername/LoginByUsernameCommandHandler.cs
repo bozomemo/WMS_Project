@@ -10,7 +10,7 @@ using MediatR;
 
 namespace Application.Features.Auth.Commands.Login.LoginByUsername
 {
-    public class LoginByUsernameCommandHandler : IRequestHandler<LoginByUsernameCommand, LoggedDto>
+    public class LoginByUsernameCommandHandler : IRequestHandler<LoginByUsernameCommand, UserLoginDto>
     {
         private readonly IUserService _userService;
         private readonly IAuthService _authService;
@@ -21,7 +21,7 @@ namespace Application.Features.Auth.Commands.Login.LoginByUsername
             _userService = userService;
         }
 
-        public async Task<LoggedDto> Handle(LoginByUsernameCommand request, CancellationToken cancellationToken)
+        public async Task<UserLoginDto> Handle(LoginByUsernameCommand request, CancellationToken cancellationToken)
         {
             var user = await _userService.GetByUsername(request.Username) ?? throw new BusinessException(AuthConstants.USER_DOESNT_EXIST);
 
@@ -35,7 +35,7 @@ namespace Application.Features.Auth.Commands.Login.LoginByUsername
 
             var addedRefreshToken = await _authService.AddRefreshToken(refreshToken);
 
-            return new() { AccessToken = accessToken, RefreshToken = addedRefreshToken };
+            return new() { Id = user.Id, Email = user.Email, Name = user.FirstName + " " + user.LastName, AccessToken = accessToken, RefreshToken = addedRefreshToken };
         }
     }
 }

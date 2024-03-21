@@ -23,5 +23,13 @@ namespace Domain.Constants
         public const string ZONE_DOESNT_EXIST = "Zone doesn't exist.";
 
         public const string CARTON_DOESNT_EXIST = "Carton doesn't exist.";
+
+        public const string WAREHOUSE_RECEIPT_DOESNT_EXIST = "Warehouse receipt doesn't exist.";
+
+        public const string WAREHOUSE_ITEM_DOESNT_EXIST = "Warehouse receipt item doesn't exist.";
+
+        public const string SHIPMENT_DOESNT_EXIST = "Shipment doesn't exist.";
+
+        public const string SHIPMENT_MAPPING_NOT_SUCCESSFULL = "Shipment mapping not successfull.";
     }
 }

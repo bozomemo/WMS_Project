@@ -19,7 +19,7 @@ namespace Application.Features.Zone.MappingProfiles
 
             CreateMap<CreateZoneCommand, Domain.Entities.Zone>().ReverseMap();
 
-            CreateMap<UpdateZoneCommand, Domain.Entities.Zone>().ForAllMembers(opt => opt.Condition((src,dst,value) => value is int ? (int)value != 0 : value is not null));
+            CreateMap<UpdateZoneCommand, Domain.Entities.Zone>().ForAllMembers(opt => opt.Condition((src,dst,value) => value is int val ? val != 0 : value is not null));
         }
     }
 }

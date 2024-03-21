@@ -19,7 +19,7 @@ namespace Application.Features.PalletTypeF.MappingProfiles
 
             CreateMap<CreatePalletTypeCommand, PalletType>().ReverseMap();
 
-            CreateMap<UpdatePalletTypeCommand, PalletTypeDto>().ForAllMembers(options => options.Condition((src,dest,value) => value is not null));
+            CreateMap<UpdatePalletTypeCommand, PalletType>().ForAllMembers(options => options.Condition((src,dest,value) => value is not null));
         }
     }
 }

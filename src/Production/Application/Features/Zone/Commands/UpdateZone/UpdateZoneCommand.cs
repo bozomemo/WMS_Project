@@ -22,7 +22,7 @@ namespace Application.Features.Zone.Commands.UpdateZone
 
         public bool? IsActive { get; set; }
 
-        public bool IsBin { get; set; }
+        public bool? IsBin { get; set; }
 
         public string[] Roles => [RolesConstants.ADMIN_ROLE];
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.WarehouseReceipt.Dtos
 {
-    public class WarehouseReceiptItemDto
+    public class WarehouseItemDto
     {
         public int Id {  get; set; }
         public string? Title { get; set; }

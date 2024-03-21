@@ -55,7 +55,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("EmailAuthenticator");
+                    b.ToTable("EmailAuthenticator", (string)null);
                 });
 
             modelBuilder.Entity("Core.Security.Entities.OperationClaim", b =>
@@ -84,7 +84,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OperationClaims");
+                    b.ToTable("OperationClaims", (string)null);
                 });
 
             modelBuilder.Entity("Core.Security.Entities.OtpAuthenticator", b =>
@@ -121,7 +121,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("OtpAuthenticators");
+                    b.ToTable("OtpAuthenticators", (string)null);
                 });
 
             modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>
@@ -177,7 +177,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("RefreshTokens");
+                    b.ToTable("RefreshTokens", (string)null);
                 });
 
             modelBuilder.Entity("Core.Security.Entities.User", b =>
@@ -229,7 +229,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Core.Security.Entities.UserOperationClaim", b =>
@@ -264,7 +264,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserOperationClaims");
+                    b.ToTable("UserOperationClaims", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Carton", b =>
@@ -313,7 +313,7 @@ namespace Persistence.Migrations
                         .IsUnique()
                         .HasFilter("[UniqueIdentifier] IS NOT NULL");
 
-                    b.ToTable("Cartons");
+                    b.ToTable("Cartons", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.OperationType", b =>
@@ -351,7 +351,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("WarehouseId");
 
-                    b.ToTable("OperationTypes");
+                    b.ToTable("OperationTypes", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Pallet", b =>
@@ -403,7 +403,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ZoneId");
 
-                    b.ToTable("Pallets");
+                    b.ToTable("Pallets", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.PalletMovement", b =>
@@ -445,7 +445,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("OperationTypeId");
 
-                    b.ToTable("PalletMovements");
+                    b.ToTable("PalletMovements", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.PalletStatus", b =>
@@ -477,7 +477,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PalletStatuses");
+                    b.ToTable("PalletStatuses", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.PalletType", b =>
@@ -510,7 +510,52 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PalletTypes");
+                    b.ToTable("PalletTypes", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.Shipment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Approved")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ApprovedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeliveryNoteNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasIrregularProducts")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("OrderNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Shipments", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Supplier", b =>
@@ -542,7 +587,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Suppliers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Warehouse", b =>
@@ -577,7 +622,70 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Warehouses");
+                    b.ToTable("Warehouses", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.WarehouseItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Barcode")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CountedQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsIrregular")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ItemNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ShipmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalExpectedQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("WarehouseReceiptId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShipmentId");
+
+                    b.HasIndex("WarehouseReceiptId");
+
+                    b.HasIndex("Barcode", "ItemNo");
+
+                    b.ToTable("WarehouseReceiptItems", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.WarehouseReceipt", b =>
@@ -622,65 +730,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WarehouseReceipts");
-                });
-
-            modelBuilder.Entity("Domain.Entities.WarehouseReceiptItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Barcode")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("CountedQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsIrregular")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ItemNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalExpectedQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("WarehouseReceiptId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WarehouseReceiptId");
-
-                    b.HasIndex("Barcode", "ItemNo");
-
-                    b.ToTable("WarehouseReceiptItems");
+                    b.ToTable("WarehouseReceipts", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Zone", b =>
@@ -720,7 +770,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("WarehouseId");
 
-                    b.ToTable("Zone");
+                    b.ToTable("Zone", (string)null);
                 });
 
             modelBuilder.Entity("Core.Security.Entities.EmailAuthenticator", b =>
@@ -843,13 +893,17 @@ namespace Persistence.Migrations
                     b.Navigation("OperationType");
                 });
 
-            modelBuilder.Entity("Domain.Entities.WarehouseReceiptItem", b =>
+            modelBuilder.Entity("Domain.Entities.WarehouseItem", b =>
                 {
+                    b.HasOne("Domain.Entities.Shipment", "Shipment")
+                        .WithMany("ShipmentItems")
+                        .HasForeignKey("ShipmentId");
+
                     b.HasOne("Domain.Entities.WarehouseReceipt", "WarehouseReceipt")
                         .WithMany("WarehouseReceiptItems")
-                        .HasForeignKey("WarehouseReceiptId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("WarehouseReceiptId");
+
+                    b.Navigation("Shipment");
 
                     b.Navigation("WarehouseReceipt");
                 });
@@ -875,6 +929,11 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.Pallet", b =>
                 {
                     b.Navigation("Cartons");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Shipment", b =>
+                {
+                    b.Navigation("ShipmentItems");
                 });
 
             modelBuilder.Entity("Domain.Entities.Warehouse", b =>

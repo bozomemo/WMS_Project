@@ -28,7 +28,13 @@ namespace WebAPI.Controllers
 
             if (result.RefreshToken is not null) SetRefreshTokenToCookie(result.RefreshToken);
 
-            return Ok(result.AccessToken);
+            return Ok(new
+            {
+                result.Id,
+                result.Name,
+                result.Email,
+                AccessToken = result.AccessToken?.Token,
+            });
         }
 
         [HttpGet("RefreshToken")]

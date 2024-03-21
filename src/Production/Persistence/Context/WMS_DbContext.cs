@@ -23,7 +23,8 @@ namespace Persistence.Context
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<OtpAuthenticator> OtpAuthenticators { get; set; }
         public DbSet<WarehouseReceipt> WarehouseReceipts { get; set; }
-        public DbSet<WarehouseReceiptItem> WarehouseReceiptItems { get; set; }
+        public DbSet<Shipment> Shipments { get; set; }
+        public DbSet<WarehouseItem> WarehouseReceiptItems { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

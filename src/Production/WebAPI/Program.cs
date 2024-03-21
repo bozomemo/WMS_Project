@@ -1,4 +1,5 @@
 using Application;
+using Core.CrossCuttingConcerns.Exceptions;
 using Core.Security.Encryption;
 using Core.Security.JWT;
 using Infrastructure;
@@ -64,14 +65,20 @@ namespace WebAPI
                 };
             });
 
-            builder.Services.AddCors(options =>
+            builder.Services.AddCors(
+                options =>
             {
-                options.AddPolicy(name: "MyAllowSpecificOrigins",
+                options.AddPolicy(name: "AllowFrontEnd",
                     policy =>
                     {
-                        policy.WithOrigins("https://localhost/*");
+                        policy
+                        .WithOrigins("http://localhost:3000") // Specify your frontend origin
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
                     });
-            });
+            }
+            );
 
             var app = builder.Build();
 
@@ -82,7 +89,9 @@ namespace WebAPI
                 app.UseSwaggerUI();
             }
 
-            app.UseCors("MyAllowSpecificOrigins");
+            app.UseCors("AllowFrontEnd");
+
+            app.ConfigureCustomExceptionMiddleware();
 
             app.UseHttpsRedirection();
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Domain.Entities
 {
     [Index(nameof(Barcode),nameof(ItemNo))]
-    public class WarehouseReceiptItem : Entity
+    public class WarehouseItem : Entity
     {
         public required string Title { get; set; }
 
@@ -28,7 +28,10 @@ namespace Domain.Entities
         public bool IsIrregular { get; set; }
 
 
-        public int WarehouseReceiptId { get; set; }
+        public int? WarehouseReceiptId { get; set; }
         public virtual WarehouseReceipt? WarehouseReceipt { get; set; }
+
+        public int? ShipmentId { get; set; }
+        public virtual Shipment? Shipment { get; set; }
     }
 }

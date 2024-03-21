@@ -40,12 +40,12 @@
     <Folder Include="Features\CartonF\Models\" />
     <Folder Include="Features\CartonF\Rules\" />
     <Folder Include="Features\CartonF\Validators\" />
-    <Folder Include="Features\WarehouseReceipt\Commands\DeleteWarehouseReceipt\" />
-    <Folder Include="Features\WarehouseReceipt\Commands\UpdateWarehouseReceipt\" />
+    <Folder Include="Features\Shipment\Constants\" />
+    <Folder Include="Features\Shipment\Models\" />
+    <Folder Include="Features\Shipment\Rules\" />
+    <Folder Include="Features\Shipment\Validators\" />
     <Folder Include="Features\WarehouseReceipt\Constants\" />
-    <Folder Include="Features\WarehouseReceipt\MappingProfiles\" />
     <Folder Include="Features\WarehouseReceipt\Models\" />
-    <Folder Include="Features\WarehouseReceipt\Queries\" />
     <Folder Include="Features\WarehouseReceipt\Rules\" />
     <Folder Include="Features\WarehouseReceipt\Validators\" />
     <Folder Include="Features\Zone\Constants\" />

@@ -9,6 +9,7 @@ namespace Application.Features.Zone.Dtos
 {
     public class ZoneDto
     {
+        public int Id { get; set; }
         public string ZoneCode { get; set; }
 
         public string? Description { get; set; }

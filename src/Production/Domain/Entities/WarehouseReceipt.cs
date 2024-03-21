@@ -31,6 +31,6 @@ namespace Domain.Entities
 
         public int CreatedByUserId { get; set; }
 
-        public virtual ICollection<WarehouseReceiptItem> WarehouseReceiptItems { get; set; }
+        public virtual ICollection<WarehouseItem> WarehouseReceiptItems { get; set; }
     }
 }

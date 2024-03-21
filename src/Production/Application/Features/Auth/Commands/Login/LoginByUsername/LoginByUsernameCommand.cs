@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Auth.Commands.Login.LoginByUsername
 {
-    public class LoginByUsernameCommand : IRequest<LoggedDto>
+    public class LoginByUsernameCommand : IRequest<UserLoginDto>
     {
         public string Username { get; set; }
 
