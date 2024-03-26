@@ -1,4 +1,5 @@
 ﻿using Application.Features.WarehouseF.Commands.CreateWarehouse;
+using Application.Features.WarehouseReceipt.Commands.ApproveWarehouseReceipt;
 using Application.Features.WarehouseReceipt.Commands.CreateWarehouseReceipt;
 using Application.Features.WarehouseReceipt.Commands.UpdateWarehouseReceipt;
 using Application.Features.WarehouseReceipt.Dtos;
@@ -19,6 +20,8 @@ namespace Application.Features.WarehouseReceipt.MappingProfiles
             CreateMap<Domain.Entities.WarehouseReceipt, WarehouseReceiptDto>().ReverseMap();
 
             CreateMap<WarehouseItem, WarehouseItemDto>().ReverseMap();
+
+            CreateMap<ApproveReceiptItem, WarehouseItem>().ReverseMap();
 
             CreateMap<CreateWarehouseReceiptCommand, Domain.Entities.WarehouseReceipt>().ReverseMap();
 

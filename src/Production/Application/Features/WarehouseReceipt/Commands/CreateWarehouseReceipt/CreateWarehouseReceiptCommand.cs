@@ -17,7 +17,10 @@ namespace Application.Features.WarehouseReceipt.Commands.CreateWarehouseReceipt
         /// <summary>
         /// İrsaliye numarası
         /// </summary>
-        public required string DeliveryNoteNo { get; set; }
+        public string? DeliveryNoteNo { get; set; }
+
+        public int SupplierId { get; set; }
+        public virtual Supplier Supplier { get; set; }
 
         public bool Approved { get; set; }
 

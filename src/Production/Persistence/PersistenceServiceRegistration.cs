@@ -30,6 +30,7 @@ namespace Persistence
             services.AddScoped<IWarehouseReceiptRepository, WarehouseReceiptRepository>();
             services.AddScoped<IWarehouseItemRepository, WarehouseItemRepository>();
             services.AddScoped<IShipmentRepository, ShipmentRepository>();
+            services.AddScoped<IProductPoolRepository, ProductPoolRepository>();
 
 
             return services;

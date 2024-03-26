@@ -1,9 +1,11 @@
 ﻿using Application.Features.WarehouseReceipt.Commands.CreateWarehouseReceipt;
 using Application.Features.WarehouseReceipt.Commands.DeleteWarehouseReceipt;
 using Application.Features.WarehouseReceipt.Commands.UpdateWarehouseReceipt;
+using Application.Features.WarehouseReceipt.Models;
 using Application.Features.WarehouseReceipt.Queries.GetAllActiveWarehouseReceipts;
 using Application.Features.WarehouseReceipt.Queries.GetAllWarehouseReceipts;
 using Application.Features.WarehouseReceipt.Queries.GetWarehouseReceiptById;
+using Application.Features.WarehouseReceipt.Queries.ParseGS1Barcode;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -67,6 +69,16 @@ namespace WebAPI.Controllers
             var command = new DeleteWarehouseReceiptCommand { Id = id };
 
             var result = await Mediator.Send(command);
+
+            return Ok(result);
+        }
+
+        [HttpPost("ParseGS1Barcode")]
+        public async Task<IActionResult> ParseGS1Barcode([FromBody] GS1BarcodeModel barcode)
+        {
+            var query = new ParseGS1BarcodeQuery { GS1Barcode = barcode.Barcode };
+
+            var result = await Mediator.Send(query);
 
             return Ok(result);
         }

@@ -28,7 +28,7 @@ namespace WebAPI
 
             builder.Services.AddSwaggerGen(opt =>
             {
-                opt.SwaggerDoc("v1", new OpenApiInfo { Title = "GreyfoodHumanResources API", Version = "v1" });
+                opt.SwaggerDoc("v1", new OpenApiInfo { Title = "GreyfoodWMS API", Version = "v1" });
 
                 opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -72,7 +72,7 @@ namespace WebAPI
                     policy =>
                     {
                         policy
-                        .WithOrigins("http://localhost:3000") // Specify your frontend origin
+                        .WithOrigins("http://localhost:3000", "http://localhost") // Specify your frontend origin
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
@@ -83,7 +83,7 @@ namespace WebAPI
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();

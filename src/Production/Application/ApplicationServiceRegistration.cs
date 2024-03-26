@@ -1,4 +1,5 @@
 ﻿using Application.Features.Users.Validators;
+using Application.Features.WarehouseReceipt.Rules;
 using Application.Services.AuthService;
 using Application.Services.UserService;
 using Core.Application.Pipelines.Authorization;
@@ -23,6 +24,7 @@ namespace Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+            services.AddScoped<WarehouseReceiptRules>();
 
             services.AddScoped<UpdateUserValidator>();
 

@@ -27,6 +27,7 @@ namespace Domain.Entities
 
         public bool IsIrregular { get; set; }
 
+        public string? ReceiptItemNote { get; set; }
 
         public int? WarehouseReceiptId { get; set; }
         public virtual WarehouseReceipt? WarehouseReceipt { get; set; }
